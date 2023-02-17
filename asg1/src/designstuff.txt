@@ -1,0 +1,13 @@
+#3F72AF
+#CBB26B
+#FFFFFF
+#5C8CC4
+#315A89
+#D8C691
+
+FONT
+Eina 03 Bold
+Neue Plak
+PGF Now Medium
+Neuzeit Grotesk
+Montreal Serial Bold
