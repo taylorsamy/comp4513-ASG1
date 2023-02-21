@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+
+html, body {
+    height: 100%;
+}
+
+.Toastify__toast-container {
+
+    top: 50px;
+}
+
+.debug, .debug *{
+    box-shadow: inset 0px 0px 0px 1px #f00;
+}
