@@ -1,45 +1,50 @@
-import React, { useState, useEffect, useRef } from 'react';
-import CELLS from 'vanta/dist/vanta.cells.min.js';
+import React from 'react';
+import VantaWaves from "../animated-components/VantaWaves.js";
 import Typed from 'react-typed';
 import Navbar from './Navbar';
-import * as THREE from "three";
+
+
 
 const Home = (props) => {
-    const [vantaEffect, setVantaEffect] = useState(null);
-    const myRef = useRef(null);
-    useEffect(() => {
-        if (!vantaEffect) {
-            setVantaEffect(CELLS({
-                el: myRef.current,
-                THREE,
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                scale: 1.00,
-                color2: 0x1f89ac,
-                size: 4.90,
-                width: "100vw",
-                height: "100vh",
-                speed: 0.00
-            }))
-        }
-        return () => {
-            if (vantaEffect) vantaEffect.destroy();
-        }
-    }, [vantaEffect])
-
     return (
-        
+
         <div className="w-full h-[100vh]">
+
             <Navbar />
-            <script src="https://github.com/mrdoob/three.js/blob/03cc77fd1675c22d5765407ef5878a617cf6049d/build/three.min.js" />
-            <div ref={myRef} className="h-[100%]">
-                Test
+            <div className="absolute top-0 w-full -z-10">
+                <VantaWaves
+                    shininess={10}
+                    waveHeight={30}
+                    waveSpeed={0.5}
+                    color={0xdddddd}
+                    styles={'fixed h-[100vh]'}
+                />
             </div>
 
+            <div className='relative w-full mx-auto grid md:grid-cols-2 min-h-[calc(100vh-70px)]'>
+                <div className='flex flex-col justify-center items-center'>
+                    <div className='flex flex-row md:pl-5'>
+                        <p className='md:text-5xl sm:text-4xl text-xl font-bold'>We have </p>
+                        <Typed className='md:text-5xl sm:text-4xl text-xl font-bold md:pl-2 pl-2'
+                            strings={['Romance', 'Comedy', 'Horror']}
+                            typeSpeed={120}
+                            backSpeed={140}
+                            loop />
+                    </div>
+                    <p className='md:text-3xl sm:text-2xl py-5 text-xl font-light md:pl-4 pl-2'>You name it, we have it.</p>
+                </div>
+                <div className='flex flex-col justify-center items-center'>
+                    {/* https://tailwindcomponents.com/component/search-input-1 */}
+                    <input className='bg-transparent border-b-2 border-teal-500 py-2 mr-3 px-2 leading-tight focus:outline-none' type="text" placeholder='Enter movie name here' />
+                    <button>All movies</button>
+                </div>
+            </div>
+
+            <div className='text-center mt-[-40px]'>
+                <p className='italic text-gray-500'>Background Animation: Vanta.JS</p>
+            </div>
         </div>
+
     );
 
 }

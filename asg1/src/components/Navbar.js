@@ -9,7 +9,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="flex justify-between items-center h-24 w-full mx-auto px-7 text-white bg-black">
+        <nav className="relative z-10 top-0 flex justify-between items-center h-[70px] w-full mx-auto px-7 text-white bg-black">
             <h1 className="w-full text-3xl font-bold text-[#00DF9A]">REACT.</h1>
             <ul className="hidden md:flex">
                 <li className="p-4">Home</li>
@@ -31,7 +31,7 @@ const Navbar = () => {
                     <li className="p-4">Contact</li>
                 </ul>
             </div>
-        </div>
+        </nav>
     )
 }
 
