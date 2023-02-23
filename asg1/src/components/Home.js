@@ -3,8 +3,6 @@ import VantaWaves from "../animated-components/VantaWaves.js";
 import Typed from 'react-typed';
 import Navbar from './Navbar';
 
-
-
 const Home = (props) => {
     return (
 
@@ -21,6 +19,7 @@ const Home = (props) => {
                 />
             </div>
 
+            
             <div className='relative w-full mx-auto grid md:grid-cols-2 min-h-[calc(100vh-70px)]'>
                 <div className='flex flex-col justify-center items-center'>
                     <div className='flex flex-row md:pl-5'>
@@ -35,8 +34,11 @@ const Home = (props) => {
                 </div>
                 <div className='flex flex-col justify-center items-center'>
                     {/* https://tailwindcomponents.com/component/search-input-1 */}
-                    <input className='bg-transparent border-b-2 border-teal-500 py-2 mr-3 px-2 leading-tight focus:outline-none' type="text" placeholder='Enter movie name here' />
+                    
+                    <input className='bg-transparent border-b-2 border-black py-2 mr-3 px-2 leading-tight outline-none hover:border-teal-500 duration-300' type="text" placeholder='Enter movie name here' />
                     <button>All movies</button>
+
+                    
                 </div>
             </div>
 
