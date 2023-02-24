@@ -35,20 +35,13 @@ function App() {
   }, []);
 
 
-
-
-
-
-
-
-
   return (
 
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/home" element={<Home />} />
-      <Route path="/default" element={<Default />} />
+      <Route path="/default" element={<Default movieData={movieData} />} />
     </Routes>
   );
 }
