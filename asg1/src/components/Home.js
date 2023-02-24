@@ -3,7 +3,9 @@ import VantaWaves from "../animated-components/VantaWaves.js";
 import Typed from 'react-typed';
 import Navbar from './Navbar';
 
+
 const Home = (props) => {
+    
     return (
 
         <div className="w-full h-[100vh]">
