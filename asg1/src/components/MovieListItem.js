@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Heart from '../animated-components/Heart';
 
 
+
 const MovieListItem = (props) => {
+
+  const navigate = useNavigate();
 
   const handleAddToFavourites = () => {
     props.addFavourite(props.movie);
   };
 
   const handleViewMovie = () => {
-    // Implement view movie functionality
+
+    navigate(`/movieDetails?id=${props.movie.id}`);
+
   };
 
   return (
@@ -32,6 +37,7 @@ const MovieListItem = (props) => {
           <button onClick={handleViewMovie} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
             View
           </button>
+
         </div>
       </div>
     </div>
