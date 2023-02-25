@@ -12,6 +12,8 @@ function App() {
 
   useEffect(() => {
 
+    if (!movieData.length > 0) {
+
     // check if the movie data is already in local storage
     if (localStorage.getItem('movieData')) {
       // get the movie data from local storage
@@ -22,7 +24,7 @@ function App() {
     } else {
 
       // fetch data from the API
-      fetch('https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=20')
+      fetch('https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=200')
         .then(response => response.json())
         .then(data => {
           // set the movie data
@@ -32,6 +34,7 @@ function App() {
         })
         .catch(error => console.log(error));
     }
+  }
   }, []);
 
 

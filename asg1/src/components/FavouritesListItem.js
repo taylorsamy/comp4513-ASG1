@@ -3,12 +3,12 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import Heart from '../animated-components/Heart';
 
+const FavouritesListItem = (props) => {
 
-const MovieListItem = (props) => {
+  function handleRemoveFromFavourites() {
+    props.removeFavourite(props.movie);
+  }
 
-  const handleAddToFavourites = () => {
-    props.addFavourite(props.movie);
-  };
 
   const handleViewMovie = () => {
     // Implement view movie functionality
@@ -25,18 +25,18 @@ const MovieListItem = (props) => {
         <p className="text-sm text-gray-600">Rating: {Math.round(props.movie.ratings.average * 10) / 10}</p>
         <p className="text-sm text-gray-600">Popularity: {Math.round(props.movie.ratings.popularity * 10) / 10}</p>
         <div className="mt-2">
-          <button onClick={handleAddToFavourites} className="mr-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Add to favourites
+          <button onClick={handleRemoveFromFavourites} className="mr-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Remove from favourites
           </button>
-          {/* <Heart movie={props.movie} addFavourite={props.addFavourite} selected={false} /> */}
-          <button onClick={handleViewMovie} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
-            View
-          </button>
+  
+{/* <Heart movie={props.movie} removeFavourite={props.removeFavourite}/> selected={true} */}
         </div>
       </div>
     </div>
+
+
   );
 
 }
 
-export default MovieListItem;
+export default FavouritesListItem;
