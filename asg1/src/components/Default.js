@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import MovieList from './MovieList.js';
 import Navbar from './Navbar.js';
@@ -122,6 +123,7 @@ const Default = (props) => {
 
     </div>
   )
+
 }
 
 export default Default;
