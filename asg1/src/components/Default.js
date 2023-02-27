@@ -110,7 +110,7 @@ const Default = (props) => {
 
 
   return (
-    <div className="w-full h-full bg-white">
+    <div className="w-full h-full bg-white animate-[wiggle_2s_ease-in-out]">
       <Navbar />
       <div className="grid grid-cols-4 grid-rows-1">
         
@@ -120,7 +120,7 @@ const Default = (props) => {
         <div className={showFaves ? "col-span-3 row-span-1 overflow-y-auto" : "col-span-4 row-span-1 overflow-y-auto"}>
           <MovieList movies={movies} addFavourite={addFavourite} removeFavourite={removeFavourite} />
         </div>
-        <div className={showFaves ? 'col-start-4 h-[100vh]' : 'hidden overflow-y-auto '}>
+        <div className={showFaves ? 'col-start-4 h-[100vh] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300' : 'hidden overflow-y-auto '}>
           <FavouritesList favourites={favourites} removeFavourite={removeFavourite} />
           
         </div>

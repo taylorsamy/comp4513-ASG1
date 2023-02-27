@@ -19,7 +19,7 @@ const FavouritesListItem = (props) => {
       <div className='group justify-start m-3 relative transition duration-200 hover:scale-[110%]'>
         
         <img className='shadow-2xl shadow-gray-900 rounded-md' src={`https://image.tmdb.org/t/p/w185${props.movie.poster}`} alt={`${props.movie.title} poster`} />
-        <div className='flex absolute items-center justify-center bg-black/80 transition ease-in duration-200 w-full p-[20px] bottom-0 opacity-0 group-hover:opacity-100'>
+        <div className='flex absolute items-center rounded-md justify-center bg-black/80 transition ease-in duration-200 w-full p-[20px] bottom-0 opacity-0 group-hover:opacity-100'>
           <button onClick={handleRemoveFromFavourites} className=" text-white font-bold py-2 px-4 bg-transparent">
             Remove from Favourites
           </button>
