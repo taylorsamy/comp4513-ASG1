@@ -4,18 +4,22 @@ import MovieList from './MovieList.js';
 import Navbar from './Navbar.js';
 import MovieFilter from './MovieFilter.js';
 import FavouritesList from './FavouritesList.js';
+import { useSearchParams } from "react-router-dom";
 import BG from '../bg/default.jpg';
 
 
 const Default = (props) => {
 
+  const [searchParms, setSearchParms] = useSearchParams();
   const [showFaves, setShowFaves] = useState(false);
+  const [movies, setMovies] = useState([]);
+  const [favourites, setFavourites] = useState([]);
+
+
   const handleShowFaves = () => {
     setShowFaves(!showFaves);
   }
 
-  const [movies, setMovies] = useState([]);
-  const [favourites, setFavourites] = useState([]);
 
   function addFavourite(movie) {
     const favouritesCopy = [...favourites];
@@ -115,7 +119,7 @@ const Default = (props) => {
       <div className="grid grid-cols-4 grid-rows-1">
         
         <div className="row-span-1 col-span-full ">
-          <MovieFilter onFilterChange={onFilterChange} movies={props.movieData} handleShowFaves={handleShowFaves} showFave={showFaves}/>
+          <MovieFilter onFilterChange={onFilterChange} movies={props.movieData} handleShowFaves={handleShowFaves} showFave={showFaves} /> 
         </div>
         <div className={showFaves ? "col-span-3 row-span-1 overflow-y-auto" : "col-span-4 row-span-1 overflow-y-auto"}>
           <MovieList movies={movies} addFavourite={addFavourite} removeFavourite={removeFavourite} />
@@ -133,3 +137,5 @@ const Default = (props) => {
 }
 
 export default Default;
+
+// initialSearch={{ title: searchParms.get('title') }}

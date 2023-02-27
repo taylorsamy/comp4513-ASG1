@@ -22,6 +22,8 @@ const MovieDetails = (props) => {
   const [overview, setOverview] = useState(true);
   const [details, setDetails] = useState(false);
   const [ratings, setRatings] = useState(false);
+  const [searchParms, setSearchParms] = useSearchParams();
+  const [movie, setMovie] = useState(null);
 
   const handleOverview = () => {
     setOverview(true);
@@ -42,8 +44,7 @@ const MovieDetails = (props) => {
   }
 
 
-  const [searchParms, setSearchParms] = useSearchParams();
-  const [movie, setMovie] = useState(null);
+
 
   useEffect(() => {
     // get movie id from url
@@ -69,6 +70,7 @@ const MovieDetails = (props) => {
       <img
         src={backdrop}
         className="absolute w-full h-[100vh] -z-10 brightness-[0.25] blur-[20px] shadow-none backdrop-blur-sm"
+        alt="backdrop"
       ></img>;
       {console.log(movie)}
       {movie &&
@@ -96,12 +98,10 @@ const MovieDetails = (props) => {
               </div>
 
               <div>
-                <p>2005</p>
-
-
                 <div className="flex flex-row content-evenly ">
-                  <p>{movie.release_date.substring(0, 4)}</p>
-                  <p>{movie.runtime} mins</p>
+                  <p>{movie.release_date.substring(0, 4) }</p>
+                  <br />
+                  <p>{ movie.runtime} mins</p>
 
                 </div>
                 <div className="flex flex-row gap-40">
