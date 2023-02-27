@@ -1,5 +1,5 @@
 import React from 'react';
-import VantaWaves from "../animated-components/VantaWaves.js";
+
 import Typed from 'react-typed';
 import Navbar from './Navbar';
 
@@ -12,13 +12,7 @@ const Home = (props) => {
 
             <Navbar />
             <div className="absolute top-0 w-full -z-10">
-                <VantaWaves
-                    shininess={10}
-                    waveHeight={30}
-                    waveSpeed={0.5}
-                    color={0xdddddd}
-                    styles={'fixed h-[100vh]'}
-                />
+
             </div>
 
             

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import { AiOutlineClose, AiOutlineMenu, AiFillHeart } from "react-icons/ai";
 
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 import Heart from '../animated-components/Heart';
