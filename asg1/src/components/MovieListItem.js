@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
+
 import { AiOutlineClose, AiOutlineMenu, AiFillHeart } from "react-icons/ai";
-import { Link } from 'react-router-dom';
+
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+
 import Heart from '../animated-components/Heart';
 
 
+
 const MovieListItem = (props) => {
+
+  const navigate = useNavigate();
 
   const handleAddToFavourites = () => {
     props.addFavourite(props.movie);
   };
 
   const handleViewMovie = () => {
-    // Implement view movie functionality
+
+    navigate(`/movieDetails?id=${props.movie.id}`);
+
   };
 
   return (
@@ -36,7 +45,9 @@ const MovieListItem = (props) => {
           <button onClick={handleAddToFavourites} className=" text-white font-bold py-2 px-4 bg-transparent">
             Add to Favourites
           </button>
+
           <AiFillHeart color='red' />
+
         </div>
       </div>
 
