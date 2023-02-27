@@ -15,23 +15,19 @@ const FavouritesListItem = (props) => {
   };
 
   return (
-    <div className="flex items-center border-b border-gray-300 py-4 justify-center" >
-      <div className="flex-shrink-0 w-20">
-        <img src={`https://image.tmdb.org/t/p/w92${props.movie.poster}`} alt={`${props.movie.title} poster`} />
-      </div>
-      <div className="ml-4">
-        <h2 className="font-semibold text-lg">{props.movie.title}</h2>
-        <p className="text-sm text-gray-600">{props.movie.release_date.substring(0, 4)}</p>
-        <p className="text-sm text-gray-600">Rating: {Math.round(props.movie.ratings.average * 10) / 10}</p>
-        <p className="text-sm text-gray-600">Popularity: {Math.round(props.movie.ratings.popularity * 10) / 10}</p>
-        <div className="mt-2">
-          <button onClick={handleRemoveFromFavourites} className="mr-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Remove from favourites
+    <div className="flex items-center py-4 justify-center" >
+      <div className='group justify-start m-3 relative transition duration-200 hover:scale-[110%]'>
+        
+        <img className='shadow-2xl shadow-gray-900 rounded-md' src={`https://image.tmdb.org/t/p/w185${props.movie.poster}`} alt={`${props.movie.title} poster`} />
+        <div className='flex absolute items-center justify-center bg-black/80 transition ease-in duration-200 w-full p-[20px] bottom-0 opacity-0 group-hover:opacity-100'>
+          <button onClick={handleRemoveFromFavourites} className=" text-white font-bold py-2 px-4 bg-transparent">
+            Remove from Favourites
           </button>
-  
-{/* <Heart movie={props.movie} removeFavourite={props.removeFavourite}/> selected={true} */}
         </div>
       </div>
+
+{/* <Heart movie={props.movie} removeFavourite={props.removeFavourite}/> selected={true} */}
+
     </div>
 
 

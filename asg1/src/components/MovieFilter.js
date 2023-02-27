@@ -69,7 +69,7 @@ const MovieFilter = (props) => {
   };
 
   return (
-    <div className="flex flex-wrap justify-between items-center mb-4">
+    <div className="h-[70px] flex flex-wrap justify-around items-center mb-4 mt-5">
       <div className="flex items-center mb-2 mr-4">
         <label className="mr-2 font-medium" htmlFor="title-filter">
           Title:
@@ -79,7 +79,7 @@ const MovieFilter = (props) => {
           type="text"
           value={title}
           onChange={handleTitleChange}
-          className="border border-gray-300 rounded py-1 px-2"
+          className="bg-transparent border-b-2 border-black py-2 mr-3 px-2 leading-tight outline-none hover:border-teal-500 duration-300"
         />
       </div>
       <div className="flex items-center mb-2 mr-4">
@@ -90,7 +90,7 @@ const MovieFilter = (props) => {
           id="genre-filter"
           value={genre}
           onChange={handleGenreChange}
-          className="border border-gray-300 rounded py-1 px-2"
+          className="bg-transparent border-b-2 border-black py-2 mr-3 px-2 leading-tight outline-none hover:border-teal-500 duration-300"
         >
           <option key="" value="">All genres</option>
           {genres.map((genre) => (
@@ -112,14 +112,14 @@ const MovieFilter = (props) => {
           type="number"
           value={minYear}
           onChange={handleYearChange}
-          className="border border-gray-300 rounded py-1 px-2 mr-2 w-16"
+          className="bg-transparent border-b-2 border-black py-2 mr-3 px-2 leading-tight outline-none hover:border-teal-500 duration-300 w-[90px]"
         />
         <input
           id="year-filter-max"
           type="number"
           value={maxYear}
           onChange={handleYearChange}
-          className="border border-gray-300 rounded py-1 px-2 w-16"
+          className="bg-transparent border-b-2 border-black py-2 mr-3 px-2 leading-tight outline-none hover:border-teal-500 duration-300 w-[90px]"
         />
       </div>
       <div className="flex items-center mb-2 mr-4">
@@ -132,7 +132,7 @@ const MovieFilter = (props) => {
           step="0.1"
           value={minRating}
           onChange={handleRatingChange}
-          className="border border-gray-300 rounded py-1 px-2 mr-2 w-16"
+          className="bg-transparent border-b-2 border-black py-2 mr-3 px-2 leading-tight outline-none hover:border-teal-500 duration-300 w-[90px]"
         />
         <input
           id="rating-filter-max"
@@ -140,8 +140,15 @@ const MovieFilter = (props) => {
           step="0.1"
           value={maxRating}
           onChange={handleRatingChange}
-          className="border border-gray-300 rounded py-1 px-2 w-16"
+          className="bg-transparent border-b-2 border-black py-2 mr-3 px-2 leading-tight outline-none hover:border-teal-500 duration-300 w-[90px]"
         />
+      </div>
+
+          {/* Button CSS https://flowbite.com/docs/components/buttons/ */}
+      <div>
+        <button onClick={props.handleShowFaves} className='text-white bg-gradient-to-r from-teal-400 via-teal-500
+         to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg 
+        dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2'>{props.showFave ? <p>Hide Faves</p> : <p>Show Faves</p>}</button>
       </div>
     </div>
   );

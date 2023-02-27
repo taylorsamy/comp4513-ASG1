@@ -4,10 +4,15 @@ import MovieList from './MovieList.js';
 import Navbar from './Navbar.js';
 import MovieFilter from './MovieFilter.js';
 import FavouritesList from './FavouritesList.js';
+import BG from '../bg/default.jpg';
 
 
 const Default = (props) => {
 
+  const [showFaves, setShowFaves] = useState(false);
+  const handleShowFaves = () => {
+    setShowFaves(!showFaves);
+  }
 
   const [movies, setMovies] = useState([]);
   const [favourites, setFavourites] = useState([]);
@@ -105,18 +110,19 @@ const Default = (props) => {
 
 
   return (
-    <div className="w-full h-[90vh]">
+    <div className="w-full h-full bg-white">
       <Navbar />
-      <div class="grid grid-cols-4 gap-4">
-        <div class="col-span-1 bg-gray-200 h-[90vh]">
-          <MovieFilter onFilterChange={onFilterChange} movies={props.movieData} />
+      <div className="grid grid-cols-4 grid-rows-1">
+        
+        <div className="row-span-1 col-span-full ">
+          <MovieFilter onFilterChange={onFilterChange} movies={props.movieData} handleShowFaves={handleShowFaves} showFave={showFaves}/>
         </div>
-        <div class="col-span-2 bg-gray-400 h-[90vh] ">
+        <div className={showFaves ? "col-span-3 row-span-1 overflow-y-auto" : "col-span-4 row-span-1 overflow-y-auto"}>
           <MovieList movies={movies} addFavourite={addFavourite} removeFavourite={removeFavourite} />
-
         </div>
-        <div class="col-span-1 bg-gray-200 h-[90vh]">
+        <div className={showFaves ? 'col-start-4 h-[100vh]' : 'hidden overflow-y-auto '}>
           <FavouritesList favourites={favourites} removeFavourite={removeFavourite} />
+          
         </div>
       </div>
 
