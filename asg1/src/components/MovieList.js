@@ -7,7 +7,7 @@ const MovieList = (props) => {
 
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-[84.5vh]">
       {/* for each movie in props.movies, create a MovieListItem and pass in the movie. populat them in order*/}
 
       <div>
@@ -21,7 +21,7 @@ const MovieList = (props) => {
 
         {/*Scrollbar css reference => https://tailwind-scrollbar-example.adoxography.repl.co/ && https://www.npmjs.com/package/tailwind-scrollbar */}
         {movies.length >= 1 &&
-          <div className='grid grid-cols-3 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300 overflow-y-auto w-full h-[100vh]'>
+          <div className='grid grid-cols-3 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300 overflow-y-auto w-full h-[81.4vh]'>
 
             {movies.map((movie) => {
               return <MovieListItem movie={movie} addFavourite={props.addFavourite} removeFavourite={props.removeFavourite} />
