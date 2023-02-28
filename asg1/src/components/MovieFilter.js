@@ -47,7 +47,7 @@ const MovieFilter = (props) => {
       props.onFilterChange({ title: searchParms.get('title') });
       setTimeout(() => {
         setInitialTitle(null);
-      }, 10);
+      }, 1);
     }
 
 
