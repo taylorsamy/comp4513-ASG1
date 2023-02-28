@@ -1,20 +1,25 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import Typed from 'react-typed';
 import Navbar from './Navbar';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useLocation } from 'react-router-dom';
 
 
 const Home = (props) => {
     const navigate = useNavigate();
+    const location = useLocation();
+
     const [searchTitle, setSearchTitle] = useState('');
 
-    const setTitle =(event) => {
+    const setTitle = (event) => {
         setSearchTitle(event.target.value);
     }
 
     const handleSearch = (event) => {
-        navigate('/default?title=' + searchTitle);
+        // navigate('/default?title=' + searchTitle);
+        const params = new URLSearchParams(location.title);
+        params.set('title', searchTitle);
+        navigate('/default?' + params.toString());
     }
 
     const handleAllMovies = (event) => {
@@ -31,8 +36,12 @@ const Home = (props) => {
 
             </div>
 
+            {/* if theres no localStorage.getItem('movieData') then display loading icon */}
+            {/* if theres localStorage.getItem('movieData') then display the movie data */}
 
-            <div className='relative w-full mx-auto grid md:grid-cols-2 min-h-[calc(100vh-70px)]'>
+            {localStorage.getItem('movieData') ? (<div>
+
+                <div className='relative w-full mx-auto grid md:grid-cols-2 min-h-[calc(100vh-70px)]'>
                 <div className='flex flex-col justify-center items-center'>
                     <div className='flex flex-row md:pl-5'>
                         <p className='md:text-5xl sm:text-4xl text-xl font-bold'>We have </p>
@@ -55,10 +64,6 @@ const Home = (props) => {
          to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg 
         dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2' onClick={handleSearch}>Search</button>
 
-          {/* Button CSS https://flowbite.com/docs/components/buttons/
-          <div>
-        <button onClick={props.handleShowFaves} className=''>{props.showFave ? <p>Hide Faves</p> : <p>Show Faves</p>}</button>
-      </div> */}
 
                 </div>
             </div>
@@ -66,6 +71,11 @@ const Home = (props) => {
             <div className='text-center mt-[-40px]'>
                 <p className='italic text-gray-500'>hero image credit </p>
             </div>
+
+            </div>): (<div>Loading...</div>)}
+
+
+
         </div>
 
     );
