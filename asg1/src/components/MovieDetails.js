@@ -8,6 +8,7 @@ import MovieDetailsExtra from "./movie-details-components/MovieDetailsExtra";
 import MovieDetailsRatings from "./movie-details-components/MovieDetailsRating";
 import TMDBLogo from "./logos/TMDB.png";
 import IMDBLogo from "./logos/IMDB.png";
+import MovieDetailsStar from "./movie-details-components/MovieDetailsStar";
 
 const MovieDetails = (props) => {
   const tmdbLink = `https://www.themoviedb.org/movie/`;
@@ -75,7 +76,8 @@ const MovieDetails = (props) => {
                 <p className="md:text-5xl sm:text-4xl text-xl font-bold">
                   {movie.title}
                 </p>
-                <p className="md:text-2xl">{movie.ratings.average}</p>
+                <p className="md:text-2xl">{movie.ratings.average} </p>
+                <MovieDetailsStar ratings={movie.ratings.average} />
               </div>
               <div className="flex flex-row gap-5">
                 {movie.details.genres.map((genre) => {
