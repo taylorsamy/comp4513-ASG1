@@ -83,13 +83,6 @@ const MovieDetails = (props) => {
         <AiOutlineLeft />
       </div>
 
-
-      <img
-        src={backdrop}
-        className="absolute w-full h-[100vh] -z-10 brightness-[0.25] blur-[20px] shadow-none backdrop-blur-sm"
-        alt="backdrop"
-      ></img>;
-      {console.log(movie)}
       {movie &&
 
         <div>
@@ -207,7 +200,8 @@ const MovieDetails = (props) => {
             </div>
           </div>
         </div>
-      )}
+
+      }
     </div>
   );
 };
