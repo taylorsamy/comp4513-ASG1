@@ -29,9 +29,10 @@ const Home = (props) => {
 
     return (
 
-        <div className="w-full h-[100vh]">
-
+        <div className="w-full h-[100vh] bg-heroIMG bg-cover">
+            
             <Navbar />
+
             <div className="absolute top-0 w-full -z-10">
 
             </div>
@@ -42,6 +43,7 @@ const Home = (props) => {
             {localStorage.getItem('movieData') ? (<div>
 
                 <div className='relative w-full mx-auto grid md:grid-cols-2 min-h-[calc(100vh-70px)]'>
+
                 <div className='flex flex-col justify-center items-center'>
                     <div className='flex flex-row md:pl-5'>
                         <p className='md:text-5xl sm:text-4xl text-xl font-bold'>We have </p>
