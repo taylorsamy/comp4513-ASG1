@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
 
-import { AiOutlineClose, AiOutlineMenu, AiFillHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Heart from '../animated-components/Heart';
 
@@ -18,7 +17,7 @@ const MovieListItem = (props) => {
 
   const handleViewMovie = () => {
 
-    navigate(`/movieDetails?id=${props.movie.id}`);
+
 
   };
 
@@ -41,17 +40,21 @@ const MovieListItem = (props) => {
             <p className="text-sm">Popularity: {Math.round(props.movie.ratings.popularity * 10) / 10}</p>
             <div className="mt-2">
 
-              {/* <Heart movie={props.movie} addFavourite={props.addFavourite} selected={false} /> */}
+
               <button onClick={handleViewMovie} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
                 View
               </button>
             </div>
           </div>
-          <button onClick={handleAddToFavourites} className=" text-white font-bold py-2 px-4 bg-transparent">
+          {/* <button onClick={handleAddToFavourites} className=" text-white font-bold py-2 px-4 bg-transparent">
             Add to Favourites
-          </button>
+          </button> */}
+          {/* position div in top right of parent using tailwind */}
+          <div className='absolute top-5 right-5'>
+            <Heart movie={props.movie} addFavourite={props.addFavourite} removeFavourite={props.removeFavourite} selected={false} />
+          </div>
 
-          <AiFillHeart color='red' />
+          {/* <AiFillHeart color='red' /> */}
 
         </div>
       </div>

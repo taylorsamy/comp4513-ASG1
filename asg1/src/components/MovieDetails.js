@@ -21,6 +21,8 @@ const MovieDetails = (props) => {
   const [overview, setOverview] = useState(true);
   const [details, setDetails] = useState(false);
   const [ratings, setRatings] = useState(false);
+  const [searchParms, setSearchParms] = useSearchParams();
+  const [movie, setMovie] = useState(null);
 
   const [modalOpen, setModalOpen] = useState(false);
   const setModalOpenTrue = () => {
@@ -63,8 +65,7 @@ const MovieDetails = (props) => {
     setVoted(true);
   }
 
-  const [searchParms, setSearchParms] = useSearchParams();
-  const [movie, setMovie] = useState(null);
+
 
   useEffect(() => {
     // get movie id from url
@@ -82,7 +83,15 @@ const MovieDetails = (props) => {
         <AiOutlineLeft />
       </div>
 
-      {movie && (
+
+      <img
+        src={backdrop}
+        className="absolute w-full h-[100vh] -z-10 brightness-[0.25] blur-[20px] shadow-none backdrop-blur-sm"
+        alt="backdrop"
+      ></img>;
+      {console.log(movie)}
+      {movie &&
+
         <div>
           <img
             src={"https:image.tmdb.org/t/p/original" + movie.backdrop}
@@ -125,10 +134,12 @@ const MovieDetails = (props) => {
                 })}
               </div>
 
+
               <div className="flex flex-col gap-10">
                 <div className="grid grid-cols-2 ">
                   <p>{movie.release_date.substring(0, 4)}</p>
                   <p>{movie.runtime} mins</p>
+
                 </div>
                 <div className="flex flex-row gap-5">
                   <button

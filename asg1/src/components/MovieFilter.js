@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import { useSearchParams  } from "react-router-dom";
 
 const MovieFilter = (props) => {
+
   const [title, setTitle] = useState('');
   const [genre, setGenre] = useState('');
   const [minYear, setMinYear] = useState('');
@@ -10,9 +12,14 @@ const MovieFilter = (props) => {
   const [minRating, setMinRating] = useState('');
   const [maxRating, setMaxRating] = useState('');
   const [genres, setGenres] = useState([]);
+  const [searchParms, setSearchParms] = useSearchParams();
+  const [initialTitle, setInitialTitle] = useState(searchParms.get('title'));
+
+
 
   useEffect(() => {
 
+  
     const allGenres = []
 
     props.movies.forEach(movie => {
@@ -30,14 +37,27 @@ const MovieFilter = (props) => {
     setGenres(allGenres);
 
 
+
   }, [props.movies]);
 
+  useEffect(() => {
+    if (searchParms.get('title') && initialTitle !== null) {
+      console.log("setting title");
+      setTitle(searchParms.get('title'));
+      props.onFilterChange({ title: searchParms.get('title') });
+      setTimeout(() => {
+        setInitialTitle(null);
+      }, 1);
+    }
 
 
+
+  }, [props, searchParms, initialTitle]);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
     props.onFilterChange({ title: event.target.value });
+    // setSearchParms({ title: event.target.value });
   };
 
   const handleGenreChange = (event) => {

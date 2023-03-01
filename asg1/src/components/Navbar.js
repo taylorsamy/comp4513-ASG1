@@ -37,7 +37,8 @@ const Navbar = (props) => {
 
 
     return (
-        <nav className="realtive top-0 z-10 w-full bg-[#0f7ca7] h-[50px] px-4 flex justify-between align-middle">
+        <nav className="realtive top-0 z-10 w-full bg-gradient-to-r from-teal-400 via-teal-500
+        to-teal-600 h-[50px] px-4 flex justify-between align-middle">
             <div className="block sm:hidden">
                 {/* <Hamburger color="#FFFFFF" rounded toggled={isOpen} toggle={setOpen} /> */}
             </div>
