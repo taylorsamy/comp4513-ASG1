@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.0572a00b.css",
-    "main.js": "/static/js/main.6442a560.js",
+    "main.js": "/static/js/main.456903f6.js",
     "static/media/BG.jpg": "/static/media/BG.57838a4cdd730f1a86d7.jpg",
     "static/media/NateRobot.png": "/static/media/NateRobot.067df26ba66fa4e960df.png",
     "static/media/TaylorRobot.png": "/static/media/TaylorRobot.f699fad2a2ea42cb17dc.png",
     "static/media/IMDB.png": "/static/media/IMDB.f4c9cf7f5158e6f414a0.png",
     "index.html": "/index.html",
     "main.0572a00b.css.map": "/static/css/main.0572a00b.css.map",
-    "main.6442a560.js.map": "/static/js/main.6442a560.js.map"
+    "main.456903f6.js.map": "/static/js/main.456903f6.js.map"
   },
   "entrypoints": [
     "static/css/main.0572a00b.css",
-    "static/js/main.6442a560.js"
+    "static/js/main.456903f6.js"
   ]
 }
