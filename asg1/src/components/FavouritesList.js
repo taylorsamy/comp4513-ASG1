@@ -5,7 +5,7 @@ import FavouritesListItem from './FavouritesListItem';
 const FavouritesList = (props) => {
   const movies = props.favourites;
 
-  
+
 
 
   return (
@@ -21,9 +21,18 @@ const FavouritesList = (props) => {
           <p className='text-xl'>Try adding a movie!</p>
         </div>}
 
-        { movies.map((movie) => {
-          
-            return <FavouritesListItem movie={movie} removeFavourite={props.removeFavourite} />
+        {movies.map((movie) => {
+          let favourite = false;
+          // Check if movie is in favourites without using includes
+          if (props.favourites.length > 0) {
+            for (let i = 0; i < props.favourites.length; i++) {
+              if (props.favourites[i].id === movie.id) {
+                favourite = true;
+              }
+            }
+          }
+
+          return <FavouritesListItem movie={movie} removeFavourite={props.removeFavourite} isFavourite={favourite} />
 
         })}
       </div>

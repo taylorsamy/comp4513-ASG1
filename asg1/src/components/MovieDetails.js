@@ -10,6 +10,9 @@ import TMDBLogo from "./logos/TMDB.png";
 import IMDBLogo from "./logos/IMDB.png";
 import MovieDetailsStar from "./movie-details-components/MovieDetailsStar";
 import StarsRating from "./movie-details-components/StarsRating";
+import FavouritesList from "./FavouritesList";
+import { AiFillHeart } from "react-icons/ai";
+
 
 // Notes: References
 // React Modal : https://reactcommunity.org/react-modal/;
@@ -25,6 +28,78 @@ const MovieDetails = (props) => {
   const [movie, setMovie] = useState(null);
 
   const [modalOpen, setModalOpen] = useState(false);
+
+  const [favourites, setFavourites] = useState(JSON.parse(localStorage.getItem('favourites')));
+  const [isFavourite, setIsFavourite] = useState(false);
+
+
+  // const handleShowFaves = () => {
+  //   setShowFaves(!showFaves);
+  // }
+
+  const toggleFavourite = () => {
+    if (isFavourite){
+      removeFavourite(movie);
+      console.log('removed');
+    }
+    else {
+      addFavourite(movie);
+      console.log('added');
+    }
+    
+    }
+
+  const addFavourite = (movie) => {
+    const favouritesCopy = [...favourites];
+    // if movie is not in favourites, add it
+    if (!favouritesCopy.some((m) => m.id === movie.id)) {
+      favouritesCopy.push(movie);
+      setFavourites(sortByTitle(favouritesCopy));
+      saveFavorites(sortByTitle(favouritesCopy));
+
+    }
+  }
+
+  const removeFavourite = (movie) => {
+    const favouritesCopy = [...favourites];
+    let index = null;
+    for (let i = 0; i < favouritesCopy.length; i++) {
+      if (favouritesCopy[i].id === movie.id) {
+        index = i;
+        break;
+      }
+    }
+
+    console.log(index)
+    favouritesCopy.splice(index, 1);
+    setFavourites(sortByTitle(favouritesCopy));
+    saveFavorites(sortByTitle(favouritesCopy));
+
+  }
+
+  // function to sort movies by title
+  const sortByTitle = (movies) => {
+    const movieCopy = [...movies];
+    movieCopy.sort((a, b) => {
+      if (a.title < b.title) {
+        return -1;
+      }
+      if (a.title > b.title) {
+        return 1;
+      }
+      return 0;
+    });
+    return movieCopy;
+  }
+
+
+  const saveFavorites = (favs) => {
+    localStorage.setItem('favourites', JSON.stringify(favs));
+    console.log('saved');
+  }
+
+
+
   const setModalOpenTrue = () => {
     console.log('trues');
     setModalOpen(true);
@@ -74,7 +149,15 @@ const MovieDetails = (props) => {
     const movie = props.movieData.find((m) => m.id == id);
     // set movie
     setMovie(movie);
-  }, [props.movieData, searchParms]);
+
+    // check if movie is in favourites
+    if (favourites.some((m) => m.id === movie.id)) {
+      setIsFavourite(true);
+    }
+    else {
+      setIsFavourite(false);
+    }
+  }, [props.movieData, searchParms, favourites]);
 
   return (
     <div className="w-full h-[93vh]">
@@ -115,8 +198,15 @@ const MovieDetails = (props) => {
                 <p className="md:text-5xl sm:text-4xl text-xl font-bold">
                   {movie.title}
                 </p>
+                <div className='hover:scale-[110%]' onClick={toggleFavourite}>
+            {/* <Heart movie={props.movie} addFavourite={props.addFavourite} removeFavourite={props.removeFavourite} selected={props.isFavourite} /> */}
+            {isFavourite && <AiFillHeart color='red' size={30} />}
+            {!isFavourite && <AiFillHeart color='white' size={30} />}
+
+          </div>
               </div>
               <MovieDetailsStar ratings={movie.ratings.average} />
+
               <div className="flex flex-row gap-5">
                 {movie.details.genres.map((genre, index) => {
                   return (
@@ -172,6 +262,7 @@ const MovieDetails = (props) => {
                   <div className='flex flex-col gap-5'>
 
                     <StarsRating voted={voted} />
+                    
                     {!voted ? <p>Leave a rating!</p> : <p>Thanks for rating!</p>}
                     <button disabled={voted} onClick={handleSetVoted}>Submit</button>
                   </div>
@@ -199,6 +290,8 @@ const MovieDetails = (props) => {
               </div>
             </div>
           </div>
+          <FavouritesList favourites={favourites} removeFavourite={removeFavourite} addFavourite={addFavourite} />
+
         </div>
 
       }
