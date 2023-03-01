@@ -8,13 +8,9 @@ const Home = (props) => {
     
     return (
 
-        <div className="w-full h-[100vh]">
-
+        <div className="w-full h-[100vh] bg-heroIMG bg-cover">
+            
             <Navbar />
-            <div className="absolute top-0 w-full -z-10">
-
-            </div>
-
             
             <div className='relative w-full mx-auto grid md:grid-cols-2 min-h-[calc(100vh-70px)]'>
                 <div className='flex flex-col justify-center items-center'>

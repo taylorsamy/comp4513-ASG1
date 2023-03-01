@@ -120,9 +120,8 @@ const Default = (props) => {
         <div className={showFaves ? "col-span-3 row-span-1 overflow-y-auto" : "col-span-4 row-span-1 overflow-y-auto"}>
           <MovieList movies={movies} addFavourite={addFavourite} removeFavourite={removeFavourite} />
         </div>
-        <div className={showFaves ? 'col-start-4 h-full overflow-y-auto scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300' : 'hidden overflow-y-auto '}>
+        <div className={showFaves ? 'col-start-4 h-full overflow-y-auto scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300 transition ease-in-out duration-300' : 'hidden overflow-y-auto '}>
           <FavouritesList favourites={favourites} removeFavourite={removeFavourite} />
-          
         </div>
       </div>
 

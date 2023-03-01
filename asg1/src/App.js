@@ -4,7 +4,7 @@ import Home from "./components/Home.js";
 import About from "./components/About.js";
 import MovieDetails from "./components/MovieDetails";
 import Default from './components/Default.js';
-
+import StarsRating from "./components/movie-details-components/StarsRating";
 import { Route, Routes } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
@@ -48,7 +48,7 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/moviedetails" element={<MovieDetails movieData={movieData} />} />
       <Route path="/default" element={<Default movieData={movieData} />} />
-
+      <Route path="/stars" element={<StarsRating />} />
     </Routes>
   );
 }

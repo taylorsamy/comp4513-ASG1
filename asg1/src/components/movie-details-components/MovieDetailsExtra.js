@@ -11,7 +11,7 @@ const MovieDetailsExtra = (props) => {
   const movieRev = currency.format(props.movie.revenue);
 
   return (
-    <div className="flex flex-col gap-5 mr-10">
+    <div className="flex flex-col gap-5 mr-40">
       <div className="grid grid-cols-2">
         <p>Tagline</p>
         <p className="italic">"{props.movie.tagline}"</p>
